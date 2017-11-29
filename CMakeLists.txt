@@ -54,11 +54,10 @@ add_message_files(
 )
 
 ## Generate services in the 'srv' folder
-# add_service_files(
-#   FILES
-#   Service1.srv
-#   Service2.srv
-# )
+add_service_files(
+  FILES
+  AddTwoInts.srv
+)
 
 ## Generate actions in the 'action' folder
 # add_action_files(
@@ -157,6 +156,16 @@ target_link_libraries(${PROJECT_NAME}_listener
 
 add_dependencies(${PROJECT_NAME}_talker ${PROJECT_NAME}_generate_messages_cpp)
 add_dependencies(${PROJECT_NAME}_listener ${PROJECT_NAME}_generate_messages_cpp)
+
+# server/client
+
+add_executable(add_two_ints_server src/add_two_ints_server.cpp)
+target_link_libraries(add_two_ints_server ${catkin_LIBRARIES})
+add_dependencies(add_two_ints_server beginner_tutorials_generate_messages_cpp)
+
+add_executable(add_two_ints_client src/add_two_ints_client.cpp)
+target_link_libraries(add_two_ints_client ${catkin_LIBRARIES})
+add_dependencies(add_two_ints_client beginner_tutorials_generate_messages_cpp)
 
 #############
 ## Install ##
