@@ -25,7 +25,6 @@ void TimerCallback(const ros::TimerEvent&)
      * in the constructor above.
      */
   chatter_pub.publish(msg);
-  
 }
 
 /**
@@ -80,5 +79,4 @@ int main(int argc, char **argv)
   ROS_INFO("talker exiting successfully.\n");
 
   return 0;
-
 }
